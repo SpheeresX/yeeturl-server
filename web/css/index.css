@@ -1,0 +1,32 @@
+/* Circular buttons */
+.btn-circle {
+	border-radius: 99rem !important;
+}
+
+/* A fix that makes Bootstrap buttons centered */
+button {
+	margin: 0 auto;
+	display: block;
+}
+
+/* black slider bars. */
+input[type=range]::-webkit-slider-runnable-track {
+	background: #000000;
+}
+input[type=range]::-moz-range-track {
+	background: #000000;
+}
+
+.rainbow-text {
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+  -webkit-background-clip: text; /* firefox is dead */
+  color: transparent;
+}
+
+.hidden {
+	display: none;
+}
+
+.overflow-break {
+  overflow-wrap: break-word;
+}
