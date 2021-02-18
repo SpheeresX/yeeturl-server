@@ -23,30 +23,30 @@
             <code id="logo">yeeturl</code>
         </h1>
         <p class="text-muted">A end-to-end encrypted URL shortener. <a href="privacy.txt" target="__blank">Read the ToS and Privacy Policy</a></p>
-        <noscript>You need to enable JavaScript to visit this website (because we can't encrypt/decrypt URLs otherwise).</noscript>
+        <noscript>You need to enable JavaScript to use this website (because we can't securely encrypt/decrypt URLs otherwise).</noscript>
         <br>
         <div id="shorten-page">
             <form id="shorten-form" autocomplete="off">
                 <label for="inputLink">Link</label>
                 <input type="url" class="form-control shadow" id="inputLink" required="true">
                 <br>
-                <label for="expiryTime" id="expiryTimeLabel"></label>
-                <input type="range" class="custom-range" min="1" max="12" id="expiryTime">
                 <button type="submit" disabled="true" id="shorten" class="btn btn-primary btn-circle shadow align-middle">
+                    <!-- link icon -->
                     <svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-link-45deg" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4.715 6.542L3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.001 1.001 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                         <path d="M5.712 6.96l.167-.167a1.99 1.99 0 0 1 .896-.518 1.99 1.99 0 0 1 .518-.896l.167-.167A3.004 3.004 0 0 0 6 5.499c-.22.46-.316.963-.288 1.46z" />
                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 0 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 0 0-4.243-4.243L6.586 4.672z" />
                         <path d="M10 9.5a2.99 2.99 0 0 0 .288-1.46l-.167.167a1.99 1.99 0 0 1-.896.518 1.99 1.99 0 0 1-.518.896l-.167.167A3.004 3.004 0 0 0 10 9.501z" />
                     </svg>
-
-                    Shorten</button>
+                    <!-- this will be displayed next to the icon -->
+                    Shorten
+                </button>
             </form>
             <br>
             <p id="result"></p>
         </div>
 
-        <!-- Will be shown if a hash (ex. #8cffe9/hAio.1) is present. The JavaScript code will take care of the content (see yeeturl.js). -->
+        <!-- Will be shown if a hash (ex. #8cffe9/hAio.1) is present. Our JS will take care of the content (see yeeturl.js). -->
         <div id="long-url-redirect" class="hidden overflow-break">
         </div>
     </div>

@@ -49,6 +49,15 @@ app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter());
 
+/* Compress http responses to decrease data usage & page load time */
+app.use(compression());
+
+/* The body parser middleware, used to get JSON data from POST requests */
+app.use(Express.json({ limit: '2kb' }));
+
+/* Make static files available */
+app.use(Express.static(__dirname + "/web"));
+
 /* Sanitize user input. We're doing this on all requests for convenience. */
 app.use((req, res, next) => {
   if (req.body) req.body = sanitize(req.body);
@@ -57,28 +66,18 @@ app.use((req, res, next) => {
   next();
 });
 
-/* Compress http responses to decrease data usage & page load time */
-app.use(compression());
-
-/* The body parser middleware, used to extract JSON data from POST requests */
-app.use(Express.json({ limit: '2kb' }));
-
-/* Make static files available */
-app.use(Express.static(__dirname + "/web"));
-
 /* API */
-/* This endpoint is used by the front-end to get the encrypted url from the database. */
-/* The ID which is sent to the server is a SHA256 hash. */
+/* This endpoint is used to get the encrypted url from the database. */
 app.get('/api/getlink', async (req, res) => {
     log('New request to /api/getlink')
     if (!req.query.id) return res.status(400).send();
     const data = await keyv.get(req.query.id);
-    /* If this URL wasn't found in the database, keyv would return "undefined". */
+    /* If a URL couldn't found in the database, keyv would return "undefined". */
     if (!data) return res.status(404).send();
     res.send(data);
 });
 
-/* The endpoint below is used by the front-end to send the encrypted URL to the database. */
+/* The endpoint below is used to send the encrypted URL to the database. */
 app.post('/api/shorten', async (req, res) => {
     log('New request to /api/shorten');
     if (!req.body.url || !isJSON(req.body.url)) return res.status(400).send();
@@ -95,7 +94,7 @@ app.post('/api/shorten', async (req, res) => {
         if (!data) break;
     }
     await keyv.set(id, req.body.url); //2629746000
-    res.status(200).json({ 
+    res.status(200).json({
         link: id
     });
 });

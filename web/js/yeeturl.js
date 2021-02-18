@@ -2,15 +2,21 @@
 
 const yeeturl = {};
 
-window.onload = () => {
-  // enable the button once our js has finished loading
-  document.getElementById('shorten').removeAttribute('disabled');
-  // make the logo rainbow on pride month for fun
-  // yeeturl doesn't care about your political opinions,
-  // feel free to use it no matter who you are
-  if (new Date().getMonth() === 5 && !navigator.userAgent.indexOf("Firefox") != -1) {
-    document.getElementById('logo').classList.add('rainbow-text');
+yeeturl.refreshUI = () => {
+  if (window.location.hash.split('/').length === 2) {
+    document.getElementById('shorten-page').classList.add('hidden');
+    document.getElementById('long-url-redirect').classList.remove('hidden');
+    yeeturl.getShortenedLink();
+  } else {
+    // do the exact opposite
+    document.getElementById('shorten-page').classList.remove('hidden');
+    document.getElementById('long-url-redirect').classList.add('hidden');
   }
+}
+
+window.onload = () => {
+  // enable the shorten button once our js has finished loading
+  document.getElementById('shorten').removeAttribute('disabled');
 
   document.getElementById('shorten').addEventListener('click', () => {
     event.preventDefault();
@@ -24,22 +30,32 @@ window.onload = () => {
     yeeturl.getShortenedLink();
   }
 
-  /* Refresh the page if the hash changes */
-  window.onhashchange = () => window.location.reload();
+  // beta: when the hash changes, just refresh the ui (?) instead of reloading the
+  //       whole page to not waste the user's internet
+  window.onhashchange = yeeturl.refreshUI;
+
+  // make the logo rainbow on pride month for fun
+  // yeeturl doesn't care about your political opinions,
+  // feel free to use it no matter who you are
+  if (new Date().getMonth() === 5 && !navigator.userAgent.indexOf("Firefox") != -1) {
+    document.getElementById('logo').classList.add('rainbow-text');
+  }
 }
 
 yeeturl.shorten = async () => {
   const output = document.getElementById('result');
-  const url_input = document.getElementById('inputLink').value;
-  const password = yeeturl.passwords.generate(10);
-
-  if (!yeeturl.validateURL(url_input))
-    return alert('It appears that this URL is invalid. Make sure it has been typed correctly.');
+  const url_input = document.getElementById('inputLink').value; // the url the user wants to shorten
+  const password = yeeturl.passwords.generate(10); // generate a password
 
   output.innerText = 'Shortening - yeeturl may be unresponsive for a while...';
 
+  if (!yeeturl.validateURL(url_input))
+    return output.innerText = 'It appears that this URL is invalid. Make sure it has been typed correctly.';
+
+  // encrypt the url
   const encrypted = sjcl.encrypt(password, url_input, { iter: 275000 });
 
+  // send it to the server
   const res = await fetch(`${document.location.origin}/api/shorten`, {
     method: 'POST',
     headers: {
@@ -56,7 +72,7 @@ yeeturl.shorten = async () => {
       case 429:
         return output.innerText = 'You are sending too much requests. Please try again later.';
       case 413:
-        return output.innerText = 'The link you have provided is too large.';
+        return output.innerText = 'The link you have provided is too long.';
       default:
         return output.innerText = 'An unknown error has occured.';
     }
@@ -80,22 +96,21 @@ yeeturl.getShortenedLink = async () => {
     console.log(res.status);
     switch (res.status) {
       case 404:
-        return longURLRedirect.innerHTML = "<p>We couldn't find this URL! It may have been removed.</p>"
+        return longURLRedirect.innerHTML = "<p>We couldn't find this link! It may have been removed.</p>"
       case 429:
-        return longURLRedirect.innerHTML = "<p>You are sending too many requests and your IP address has been blocked. Try again in a few minutes.</p>";
+        return longURLRedirect.innerHTML = "<p>You are sending too many requests. Try again in a few minutes.</p>";
       default:
-        return longURLRedirect.innerHTML = "<p>An unknown error has occured while getting your encrypted URL.</p>"
+        return longURLRedirect.innerHTML = "<p>An unknown error has occured while getting this encrypted URL.</p>"
     }
   }
-
   const data = await res.text();
 
   var decrypted;
-
   try {
     decrypted = sjcl.decrypt(code[1], data);
   } catch {
-    return longURLRedirect.innerHTML = "<p>An error has occured while decrypting this link. This often happens when the link is invalid - make sure to check for any typos.</p>";
+    // if the data is invalid, or the password is incorrect, catch the error.
+    return longURLRedirect.innerHTML = "<p>An error has occured while decrypting this link. This often happens when the password (short link) is invalid - make sure to check for any typos.</p>";
   }
 
   if (!yeeturl.validateURL(decrypted))
@@ -121,7 +136,7 @@ yeeturl.passwords = {
       window.msCrypto.getRandomValues(result);
       return result[0];
     } else {
-      alert('Your browser does not support secure ways of generating random values. Please update it.')
+      alert('Your browser does not support secure ways of generating random values. This might put the security of your links at risk.')
       return Math.floor(Math.random() * 256);
     }
   },
