@@ -21,7 +21,7 @@ const compression = require('compression');
 /* Ratelimits */
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 30,
+    max: 28,
     message: "You are sending too many requests."
 });
 
