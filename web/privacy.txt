@@ -7,12 +7,12 @@
 - MongoDB Atlas <https://www.mongodb.com/legal/privacy-policy>: hosts our database.
 3. We don't use any analytics scripts on our website, and no cookies are saved on your computer.
 4. To make sure our website stays secure, we log requests to the api. they are fully anonymous as all we get from these logs is "New request from /api/[endpoint here]". these logs will be used only to detect attacks.
-5. Our database is stored in Frankfurt, Germany.
+5. Your data is located in Frankfurt, Germany.
 
 ==========
    Terms
 ==========
-1. yeeturl strives for free speech (no matter your views), but there are still some rules that you have to follow. you may not use our service
+1. yeeturl strives for free speech no matter your views, but there are still some rules that you have to follow. you may not use our service
 - to upload or access links to illegal content (this includes malware),
 - to spread homophobia, racism, or any form of harassment that incites violence,
 - to spread fake news,
@@ -20,7 +20,7 @@
 - to doxx (leak personal information of a person) others,
 - to misuse our APIs,
 - to do anything that's considered "bad".
-2. yeeturl (and its developers) are not liable for any damages that are caused by this service. we don't guarantee that this service will work, or your data is safe (of course we try to do this though).
+2. yeeturl (and its developers) are not liable for any damages that are caused by this service. we realize that no service is ever secure and we do everything in our power to prevent any attacks.
 3. Small changes of this file will be done without any notice, but you'll be notified of any remarkable changes (such as breaking changes to the terms/privacy policy).
 4. yeeturl has a right to remove your links if they break the terms above or we run out of storage space. 
 5. yeeturl may cease its operations at any time, for any reason, with or without warning.
@@ -43,7 +43,7 @@ We will not accept requests that don't provide any plausible proof, and all user
 The source code of yeeturl is available here: https://github.com/SpheeresX/yeeturl-server
 
 The libraries we use for cryptography are heavily minified as such code can get big. however, we won't hide what we're using.
-crypt.js: sjcl <https://crypto.stanford.edu/sjcl/>
+sjcl.js: sjcl <https://crypto.stanford.edu/sjcl/>
 
 =========
    FAQ
@@ -58,7 +58,8 @@ It is estimated that our service can host around 500,000 URLs.
 
 3. What will happen when that limit will be exceeded?
 We believe that the service will just stop accepting more links. We have a simple strategy to keep yeeturl from catching a fire:
-- once we are going to get near our size limit, we're going to set an expiration time for future links
+- once we are going to get near our size limit, we're going to set an expiration time for future links (you will be notified of that if you try to shorten a link)
+- in case we have enough money from donations, we will move our service over to a dedicated VPS (with significantly more storage space than our current hoster).
 - if this won't help, we will clear our database (the users are going to get notified of this first).
 
 4. What motivated you to run this service?
