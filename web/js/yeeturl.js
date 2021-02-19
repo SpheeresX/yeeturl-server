@@ -24,11 +24,7 @@ window.onload = () => {
   });
 
   // hide the "shorten url" page and get the long url if a hash (short link) is provided
-  if (window.location.hash.split('/').length === 2) {
-    document.getElementById('shorten-page').classList.add('hidden');
-    document.getElementById('long-url-redirect').classList.remove('hidden');
-    yeeturl.getShortenedLink();
-  }
+  yeeturl.refreshUI();
 
   // beta: when the hash changes, just refresh the ui (?) instead of reloading the
   //       whole page to not waste the user's internet
