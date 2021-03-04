@@ -3,7 +3,7 @@
 <head>
     <title>yeeturl</title> 
     <meta charset="utf8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self'; connect-src 'self';">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="url shortener, yeeturl, privacy, e2ee">
     <meta name="description" content="yeeturl is a privacy-respecting and end-to-end encrypted URL shortener that cannot read any of your URLs.">
@@ -11,8 +11,10 @@
          keeps what's needed for the page to work. Replace "purged" with
          "original" if you see that the page is breaking when modifying the UI. -->
     <link rel="stylesheet" href="css/bootstrap-dark.purged.min.css">
+    <!--
     <script src="js/sjcl.js" async></script>
     <script src="js/yeeturl.js" async></script>
+    -->
     <link href="css/index.css" rel="stylesheet">
 </head>
 
@@ -54,6 +56,22 @@
         <div id="long-url-redirect" class="hidden overflow-break">
         </div>
     </div>
+
+    <script>
+        /*
+         lazy-load our javascript files so that the page will be already
+         visible (and partially usable) while things are still being loaded
+        */
+        window.onload = () => {
+            let sjclJS = document.createElement('script');
+            let yeeturlJS = document.createElement('script');
+            sjclJS.src = "js/sjcl.js";
+            yeeturlJS.src = "js/yeeturl.js";
+            document.body.appendChild(sjclJS);
+            document.body.appendChild(yeeturlJS);
+        }
+    </script>
+
 </body>
 
 </html>

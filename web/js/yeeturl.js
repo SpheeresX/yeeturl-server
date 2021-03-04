@@ -14,28 +14,27 @@ yeeturl.refreshUI = () => {
   }
 }
 
-window.onload = () => {
-  // enable the shorten button once our js has finished loading
-  document.getElementById('shorten').removeAttribute('disabled');
+// enable the shorten button once our js has finished loading
+document.getElementById('shorten').removeAttribute('disabled');
 
-  document.getElementById('shorten').addEventListener('click', () => {
-    event.preventDefault();
-    yeeturl.shorten();
-  });
+document.getElementById('shorten').addEventListener('click', () => {
+  event.preventDefault();
+  yeeturl.shorten();
+});
 
-  // hide the "shorten url" page and get the long url if a hash (short link) is provided
-  yeeturl.refreshUI();
+// hide the "shorten url" page and get the long url if a hash (short link) is provided
+yeeturl.refreshUI();
 
-  // beta: when the hash changes, just refresh the ui (?) instead of reloading the
-  //       whole page to not waste the user's internet
-  window.onhashchange = yeeturl.refreshUI;
+// beta: when the hash changes, just refresh the ui (?) instead of reloading the
+//       whole page to not waste the user's internet
+window.onhashchange = yeeturl.refreshUI;
 
-  // make the logo rainbow on pride month for fun
-  // yeeturl doesn't care about your political opinions,
-  // feel free to use it no matter who you are
-  if (new Date().getMonth() === 5 && !navigator.userAgent.indexOf("Firefox") != -1) {
-    document.getElementById('logo').classList.add('rainbow-text');
-  }
+// make the logo rainbow on pride month for fun
+// yeeturl doesn't care about your opinions,
+// feel free to use it no matter who you are or
+// what you believe in
+if (new Date().getMonth() === 5 && !navigator.userAgent.indexOf("Firefox") != -1) {
+  document.getElementById('logo').classList.add('rainbow-text');
 }
 
 yeeturl.shorten = async () => {
@@ -111,7 +110,7 @@ yeeturl.getShortenedLink = async () => {
 
   if (!yeeturl.validateURL(decrypted))
     return longURLRedirect.innerHTML =
-    "<p>The URL you were supposed to get redirected to is invalid and has been blocked to prevent attacks.</p>";
+      "<p>The URL you were supposed to get redirected to is invalid and has been blocked to prevent attacks.</p>";
 
   longURLRedirect.innerHTML = `<p>You are about to get redirected to: </p>
   <p><b><a rel="noopener noreferrer" href="${yeeturl.sanitizeURL(decrypted)}">${yeeturl.sanitizeURL(decrypted)}</a></b></p>
@@ -121,7 +120,7 @@ yeeturl.getShortenedLink = async () => {
 yeeturl.passwords = {
   _pattern: /[a-zA-Z0-9_\-\+\.]/,
 
-  _getRandomByte: function() {
+  _getRandomByte: function () {
     // https://caniuse.com/#feat=getrandomvalues
     if (window.crypto && window.crypto.getRandomValues) {
       var result = new Uint8Array(1);
@@ -137,11 +136,11 @@ yeeturl.passwords = {
     }
   },
 
-  generate: function(length) {
+  generate: function (length) {
     return Array.apply(null, {
-        length: length
-      })
-      .map(function() {
+      length: length
+    })
+      .map(function () {
         var result;
         while (true) {
           result = String.fromCharCode(this._getRandomByte());
