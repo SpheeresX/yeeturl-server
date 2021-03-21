@@ -131,7 +131,7 @@ yeeturl.passwords = {
       window.msCrypto.getRandomValues(result);
       return result[0];
     } else {
-      alert('Your browser does not support secure ways of generating random values. This might put the security of your links at risk.')
+      alert('Your browser does not support secure ways of generating random values. This might put the security of your links at risk - please update your browser.')
       return Math.floor(Math.random() * 256);
     }
   },

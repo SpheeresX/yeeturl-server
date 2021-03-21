@@ -1,7 +1,7 @@
 ==========
   Privacy
 ==========
-1. yeeturl does not store anything other than what's required for the application to function, which is the encrypted url.
+1. yeeturl does not store anything other than what's required for the service to function, which is the encrypted url.
 2. we rely on the following third parties to provide you the service:
 - Glitch <https://glitch.com/legal/privacy>: hosts our website @ yeeturl.glitch.me.
 - MongoDB Atlas <https://www.mongodb.com/legal/privacy-policy>: hosts our database.
