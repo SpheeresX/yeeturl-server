@@ -1,8 +1,6 @@
 # yeeturl
 A rewrite of the simple and 🔒 end-to-end encrypted URL shortener written in Node.js.
 
-**Warning: this rewrite is still in progress: you should expect bugs and security issues. Do not use this in production yet.**
-
 ### Installation
 1. Install the MongoDB server and Node.js
 2. Clone this repository
@@ -11,7 +9,7 @@ A rewrite of the simple and 🔒 end-to-end encrypted URL shortener written in N
 5. Write your own privacy policy and terms of service at `web/privacy.txt`. If you are running yeeturl for yourself or just for a couple of friends, you can just remove everything from this file.
 6. Run yeeturl with `node index.js` or `npm start`
 
-*It is recommended that you run yeeturl behind a reverse proxy with a [secure HTTPS configuration](https://ssl-config.mozilla.org/).*
+*It is recommended that you run yeeturl behind a reverse proxy with a [modern HTTPS configuration](https://ssl-config.mozilla.org/).*
 
 ### Backups
 This is as simple as backing up your MongoDB database - an official guide is published [here](https://docs.mongodb.com/manual/core/backups/).
