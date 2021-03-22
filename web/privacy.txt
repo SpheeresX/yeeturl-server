@@ -6,7 +6,7 @@
 - Glitch <https://glitch.com/legal/privacy>: hosts our website @ yeeturl.glitch.me.
 - MongoDB Atlas <https://www.mongodb.com/legal/privacy-policy>: hosts our database.
 3. We don't use any analytics scripts on our website, and no cookies are saved on your computer.
-4. To make sure our website stays secure, we log requests to the api. they are fully anonymous as all we get from these logs is "New request from /api/[endpoint here]". these logs will be used only to detect attacks.
+4. To make sure our website stays secure, we log requests to the api. they are fully anonymous as all we get from these logs is "New request from /api/[endpoint]". these logs will be used only to detect attacks.
 5. Your data is located in Frankfurt, Germany.
 
 ==========
