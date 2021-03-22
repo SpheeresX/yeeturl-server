@@ -2,41 +2,6 @@
 
 const yeeturl = {};
 
-yeeturl.refreshUI = () => {
-  if (window.location.hash.split('/').length === 2) {
-    document.getElementById('shorten-page').classList.add('hidden');
-    document.getElementById('long-url-redirect').classList.remove('hidden');
-    yeeturl.getShortenedLink();
-  } else {
-    // do the exact opposite
-    document.getElementById('shorten-page').classList.remove('hidden');
-    document.getElementById('long-url-redirect').classList.add('hidden');
-  }
-}
-
-// enable the shorten button once our js has finished loading
-document.getElementById('shorten').removeAttribute('disabled');
-
-document.getElementById('shorten').addEventListener('click', () => {
-  event.preventDefault();
-  yeeturl.shorten();
-});
-
-// hide the "shorten url" page and get the long url if a hash (short link) is provided
-yeeturl.refreshUI();
-
-// beta: when the hash changes, just refresh the ui (?) instead of reloading the
-//       whole page to not waste the user's internet
-window.onhashchange = yeeturl.refreshUI;
-
-// make the logo rainbow on pride month for fun
-// yeeturl doesn't care about your opinions,
-// feel free to use it no matter who you are or
-// what you believe in
-if (new Date().getMonth() === 5 && !navigator.userAgent.indexOf("Firefox") != -1) {
-  document.getElementById('logo').classList.add('rainbow-text');
-}
-
 yeeturl.shorten = async () => {
   const output = document.getElementById('result');
   const url_input = document.getElementById('inputLink').value; // the url the user wants to shorten
@@ -103,8 +68,9 @@ yeeturl.getShortenedLink = async () => {
   var decrypted;
   try {
     decrypted = sjcl.decrypt(code[1], data);
-  } catch {
+  } catch(e) {
     // if the data is invalid, or the password is incorrect, catch the error.
+    console.error(e);
     return longURLRedirect.innerHTML = "<p>An error has occured while decrypting this link. This often happens when the password (short link) is invalid - make sure to check for any typos.</p>";
   }
 
@@ -171,6 +137,43 @@ yeeturl.validateURL = value => {
   const urlSchema = /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i;
   return urlSchema.test(value);
 };
+
+yeeturl.refreshUI = () => {
+  if (window.location.hash.split('/').length === 2) {
+    document.getElementById('shorten-page').classList.add('hidden');
+    document.getElementById('long-url-redirect').classList.remove('hidden');
+    yeeturl.getShortenedLink();
+  } else {
+    // do the exact opposite
+    document.getElementById('shorten-page').classList.remove('hidden');
+    document.getElementById('long-url-redirect').classList.add('hidden');
+  }
+}
+
+/* ============================== */
+
+// enable the shorten button once our js has finished loading
+document.getElementById('shorten').removeAttribute('disabled');
+
+document.getElementById('shorten').addEventListener('click', () => {
+  event.preventDefault();
+  yeeturl.shorten();
+});
+
+// hide the "shorten url" page and get the long url if a hash (short link) is provided
+yeeturl.refreshUI();
+
+// beta: when the hash changes, just refresh the ui (?) instead of reloading the
+//       whole page to not waste the user's internet
+window.onhashchange = yeeturl.refreshUI;
+
+// make the logo rainbow on pride month for fun
+// yeeturl doesn't care about your opinions,
+// feel free to use it no matter who you are or
+// what you believe in
+if (new Date().getMonth() === 5 && !navigator.userAgent.indexOf("Firefox") != -1) {
+  document.getElementById('logo').classList.add('rainbow-text');
+}
 
 console.warn(
   "%cStop!",

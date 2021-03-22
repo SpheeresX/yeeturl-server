@@ -1,3 +1,7 @@
+***Warning: As of 22 March 2021, these tools no longer work with yeeturl.***
+
+---
+
 # yeeturl tools
 
 **yeeturl tools** is a collection of Node.js scripts made to make managing instances easier for sysadmins. There are currently 2 scripts available:
