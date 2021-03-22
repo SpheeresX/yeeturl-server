@@ -1,3 +1,8 @@
+# yeeturl - `mongoose` branch
+
+This branch focuses on replacing `@keyv/mongo` with `mongoose`, a more secure and production-ready option.
+
+<!--
 # yeeturl
 A rewrite of the simple and 🔒 end-to-end encrypted URL shortener written in Node.js.
 
@@ -20,3 +25,4 @@ Usually, the restore process should be done by restoring your MongoDB database a
 
 - [x] Determine if the maximum request body size limit could be decreased (yes, to 2kb)
 - [x] Remove code that we believed to provide security but it actually didn't
+-->
