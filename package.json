@@ -11,6 +11,7 @@
     "express": "^4.17.1",
     "express-rate-limit": "^5.2.2",
     "helmet": "^4.2.0",
+    "keyv": "^4.0.3",
     "moment": "^2.29.1",
     "mongo-sanitize": "^1.1.0",
     "mongoose": "^5.12.1"
