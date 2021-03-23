@@ -2,6 +2,9 @@
 
 const yeeturl = {};
 
+// comment this if self-hosting
+yeeturl.sinstance = 'https://yeeturl.github.io';
+
 yeeturl.shorten = async () => {
   const output = document.getElementById('result');
   const url_input = document.getElementById('inputLink').value; // the url the user wants to shorten
@@ -39,7 +42,7 @@ yeeturl.shorten = async () => {
   }
 
   const data = await res.json();
-  document.getElementById("result").innerHTML = `Shortened link: <a rel="noopener noreferrer" target="_blank" href=${document.location.origin}/#${yeeturl.sanitizeURL(data.link)}/${password}>${document.location.origin}/#${yeeturl.sanitizeURL(data.link)}/${password}</a>`;
+  document.getElementById("result").innerHTML = `Shortened link: <a rel="noopener noreferrer" target="_blank" href=${yeeturl.sinstance || document.location.origin}/#${yeeturl.sanitizeURL(data.link)}/${password}>${document.location.origin}/#${yeeturl.sanitizeURL(data.link)}/${password}</a>`;
 }
 
 yeeturl.getShortenedLink = async () => {
