@@ -114,4 +114,4 @@ app.use((req, res, next) => {
 });
 
 /* Start the webserver */
-const server = app.listen(Number(process.env.PORT) || 3000, () => log(`Server listening on port ${server.address().port}`));
+const server = app.listen(Number(process.env.PORT) || 3000, () => log(`Server listening on port ${server.address().port}`))

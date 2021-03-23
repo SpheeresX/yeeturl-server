@@ -42,7 +42,7 @@ yeeturl.shorten = async () => {
   }
 
   const data = await res.json();
-  document.getElementById("result").innerHTML = `Shortened link: <a rel="noopener noreferrer" target="_blank" href=${yeeturl.sinstance || document.location.origin}/#${yeeturl.sanitizeURL(data.link)}/${password}>${document.location.origin}/#${yeeturl.sanitizeURL(data.link)}/${password}</a>`;
+  document.getElementById("result").innerHTML = `Shortened link: <a rel="noopener noreferrer" target="_blank" href=${yeeturl.sinstance || document.location.origin}/#${yeeturl.sanitizeURL(data.link)}/${password}>${yeeturl.sinstance || document.location.origin}/#${yeeturl.sanitizeURL(data.link)}/${password}</a>`;
 }
 
 yeeturl.getShortenedLink = async () => {
