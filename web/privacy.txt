@@ -3,10 +3,12 @@
 ==========
 1. yeeturl does not store anything other than what's required for the service to function, which is the encrypted url.
 2. we rely on the following third parties to provide you the service:
-- Glitch <https://glitch.com/legal/privacy>: hosts our website @ yeeturl.glitch.me.
+- Glitch <https://glitch.com/legal/privacy>: hosts yeeturl @ yeeturl.glitch.me.
+- Replit <https://replit.com/site/privacy>: hosts yeeturl @ yeeturl.spheeresx.repl.co.
+- GitHub <https://docs.github.com/en/github/site-policy/github-privacy-statement>: hosts our redirection website @ yeeturl.github.io.
 - MongoDB Atlas <https://www.mongodb.com/legal/privacy-policy>: hosts our database.
-3. We don't use any analytics scripts on our website, and no cookies are saved on your computer.
-4. To make sure our website stays secure, we log requests to the api. they are fully anonymous as all we get from these logs is "New request from /api/[endpoint]". these logs will be used only to detect attacks.
+3. We don't use any analytics scripts on yeeturl, and no cookies are saved on your computer.
+4. To make sure yeeturl stays secure, we log requests to the api. they are fully anonymous as all we get from these logs is "New request from /api/[endpoint]". these logs will be used only to detect attacks.
 5. Your data is located in Frankfurt, Germany.
 
 ==========

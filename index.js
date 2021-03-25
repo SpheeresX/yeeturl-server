@@ -13,7 +13,6 @@ const rateLimit = require("express-rate-limit");
 const chalk = require('chalk');
 const moment = require('moment');
 const crypto = require('crypto');
-const sharegex = /^([a-f0-9]{64})$/;
 const sanitize = require('mongo-sanitize');
 const compression = require('compression');
 
