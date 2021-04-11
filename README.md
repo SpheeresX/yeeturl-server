@@ -6,6 +6,7 @@ A rewrite of the simple and 🔒 end-to-end encrypted URL shortener written in N
 You need to have a MongoDB server for yeeturl to work. [Install](https://www.mongodb.com/try/download/community) it on your computer or get a server with [MongoDB Atlas](https://www.mongodb.com/try)
 
 **(Experimental) Binaries**
+
 Download `yeeturl-server` from [here](https://github.com/SpheeresX/yeeturl-server/releases) and run it in the terminal.
 
 Example: `./server-linux --port 1234 --mongodb "mongodb://127.0.0.1:27017/yeeturl" --privacy ./my_privacy_policy.txt
