@@ -1,0 +1,72 @@
+==========
+  Privacy
+==========
+1. yeeturl does not store anything other than what's required for the service to function, which is the encrypted url.
+2. we rely on the following third parties to provide you the service:
+- Glitch <https://glitch.com/legal/privacy>: hosts yeeturl @ yeeturl.glitch.me.
+- Replit <https://replit.com/site/privacy>: hosts yeeturl @ yeeturl.spheeresx.repl.co.
+- GitHub <https://docs.github.com/en/github/site-policy/github-privacy-statement>: hosts our redirection website @ yeeturl.github.io.
+- MongoDB Atlas <https://www.mongodb.com/legal/privacy-policy>: hosts our database.
+3. We don't use any analytics scripts on yeeturl, and no cookies are saved on your computer.
+4. To make sure yeeturl stays secure, we log requests to the api. they are fully anonymous as all we get from these logs is "New request from /api/[endpoint]". these logs will be used only to detect attacks.
+5. Your data is located in Frankfurt, Germany.
+
+==========
+   Terms
+==========
+1. yeeturl strives for free speech no matter your views, but there are still some rules that you have to follow. you may not use our service
+- to upload or access links to illegal content (this includes malware),
+- to spread homophobia, racism, or any form of harassment that incites violence,
+- to spread fake news,
+- to infringe on any proprietary right of any party, including patent, trademark, trade secret, copyright, right of publicity, or other rights,
+- to doxx (leak personal information of a person) others,
+- to misuse our APIs,
+- to do anything that's considered "bad".
+2. yeeturl (and its developers) are not liable for any damages that are caused by this service. we realize that no service is ever secure and we do everything in our power to prevent any attacks.
+3. Small changes of this file will be done without any notice, but you'll be notified of any remarkable changes (such as breaking changes to the terms/privacy policy).
+4. yeeturl has a right to remove your links if they break the terms above or we run out of storage space. 
+5. yeeturl may cease its operations at any time, for any reason, with or without warning.
+
+==========
+  Contact
+==========
+To report content or ask us some questions, you can contact us by email: contact (D_0_T) zygoid (A_T) aleeas.com
+
+If you want to report links, please include the following in your message:
+- the infringing url
+- reasons why you want this url to be removed
+- your e-mail address if you want to hear back from us
+
+We will not accept requests that don't provide any plausible proof, and all users are innocent unless proven guilty.
+
+==========
+  Source
+==========
+The source code of yeeturl is available here: https://github.com/SpheeresX/yeeturl-server
+
+The libraries we use for cryptography are heavily minified as such code can get big. however, we won't hide what we're using.
+sjcl.js: sjcl <https://crypto.stanford.edu/sjcl/>
+
+=========
+   FAQ
+=========
+
+1. Why should I use yeeturl instead of something like Bitly?
+yeeturl is a privacy-respecting service that encrypts your URLs, which means we can't read them.
+If you don't care about privacy (you should), just use Bitly.
+
+2. How much capacity do you currently have?
+It is estimated that our service can host around 500,000 URLs.
+
+3. What will happen when that limit will be exceeded?
+We believe that the service will just stop accepting more links. We have a simple strategy to keep yeeturl from catching a fire:
+- once we are going to get near our size limit, we're going to set an expiration time for future links (you will be notified of that if you try to shorten a link)
+- in case we have enough money from donations, we will move our service over to a dedicated VPS (with significantly more storage space than our current hoster).
+- if this won't help, we will clear our database (the users are going to get notified of this first).
+
+4. What motivated you to run this service?
+The need for a private URL shortening service. The majority of the services I tried were either broken, not private enough or sold your data.
+Fun fact: it took just a single day to set up the basic working project, including E2EE. The rest was just working on fixing bugs, changing libraries and making the website look nice.
+
+5. I don't think this service is safe when it comes to sustainability, is it?
+It's going better than you might think. All services we use have some kind of 'free tier' which lets us run this app even if no one is going to donate to us, provided it isn't widely known.

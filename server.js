@@ -1,6 +1,6 @@
 "use strict";
 
-exports.run = (port, mongo_url) => {
+exports.run = (port, mongo_url, cli, privacyText) => {
   const mongoose = require('mongoose')
   const Express = require('express');
   const app = new Express();
@@ -47,6 +47,16 @@ exports.run = (port, mongo_url) => {
 
   /* The body parser middleware, used to get JSON data from POST requests */
   app.use(Express.json({ limit: '2kb' }));
+
+  /* If we're running as a CLI app, send the privacy policy that we got from cli.js instead of the one in dist/. */
+  app.use('/privacy.txt', (req, res, next) => {
+    if (cli) {
+      res.set('Content-Type', 'text/plain');
+      return res.send(privacyText);
+    } else {
+      next();
+    }
+  });
 
   /* Make static files available */
   app.use(Express.static(__dirname + "/dist"));
@@ -109,5 +119,8 @@ exports.run = (port, mongo_url) => {
   });
 
   /* Start the webserver */
-  const server = app.listen(Number(port) || 3000, () => log('Listening on port ${server.address().port}'));
+  const server = app.listen(Number(port) || 3000, () => log(`Listening on port ${server.address().port}`));
 }
+
+if (require.main === module)
+  return console.log('Please run index.js instead');
