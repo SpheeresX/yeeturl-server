@@ -21,9 +21,9 @@ jobs:
       - run: npm i -g nexe
       - run: npm i
       - run: mkdir build/
-      - run: nexe -t linux-x64-12.16.2 cli.js -o build/server-linux
-      - run: nexe -t windows-x86-12.18.2 cli.js -o build/server-windows
-      - run: nexe -t mac-x64-12.18.2 cli.js -o build/server-mac
+      - run: nexe -t linux-x64-12.16.2 cli.js --resource "./dist/*" -o build/server-linux
+      - run: nexe -t windows-x86-12.18.2 cli.js --resource "./dist/*" -o build/server-windows
+      - run: nexe -t mac-x64-12.18.2 cli.js --resource "./dist/*" -o build/server-mac
 
       - uses: edgarrc/action-7z@v1.0.4
         with:
