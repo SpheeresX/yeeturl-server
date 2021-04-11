@@ -13,13 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      uses: actions/checkout@v2
-      # Sets up node
       - name: Build
         uses: actions/setup-node@v1
           with:
             node-version: 12
+        uses: actions/checkout@v2
         run: npm i -g nexe
         run: mkdir build/
         run: nexe -t linux-x64-12.16.2 cli.js -o build/server-linux
