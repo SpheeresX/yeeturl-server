@@ -26,5 +26,6 @@ jobs:
         run: |
           git config --global user.name 'Gulp Bot'
           git config --global user.email 'booooogulpasugfdhfgjdsg@users.noreply.github.com'
+          git add --all
           git commit -am "Update dist folder"
           git push
