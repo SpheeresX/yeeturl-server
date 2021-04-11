@@ -119,7 +119,7 @@ exports.run = (port, mongo_url, cli, privacyText) => {
   });
 
   /* Start the webserver */
-  const server = app.listen(Number(port) || 3000, () => log(`Listening on port ${server.address().port}`));
+  const server = app.listen(Number(port), () => log(`Listening on port ${server.address().port}`));
 }
 
 if (require.main === module)
