@@ -30,11 +30,11 @@ jobs:
               args: 7z a -t7z -mx=9 build.7z ./build/            
 
       - name: Publish release
-          uses: "marvinpinto/action-automatic-releases@latest"
-            with:
-              repo_token: "${{ secrets.GITHUB_TOKEN }}"
-              automatic_release_tag: "latest"
-              prerelease: false
-              title: "yeeturl-server"
-              files: |
-                build.7z
+        uses: "marvinpinto/action-automatic-releases@latest"
+          with:
+            repo_token: "${{ secrets.GITHUB_TOKEN }}"
+            automatic_release_tag: "latest"
+            prerelease: false
+            title: "yeeturl-server"
+            files: |
+              build.7z
