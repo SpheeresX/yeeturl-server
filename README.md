@@ -4,12 +4,10 @@ A rewrite of the simple and 🔒 end-to-end encrypted URL shortener written in N
 ## Installation
 1. Install the MongoDB server and Node.js
 2. Clone this repository
-3. Download all third-party libraries; open a terminal, `cd` into the repo you just cloned, and type `npm i --include=dev`.
+3. Download all third-party libraries; open a terminal, `cd` into the repo you just cloned, and type `npm i`.
 4. Copy `env.example` into `.env` and replace all the values in here
 5. Write your own privacy policy and terms of service at `web/privacy.txt`. If you are running yeeturl for yourself or just for a couple of friends, you can just remove everything from this file.
-6. Install Gulp: `npm i -g gulp-cli`
-7. Run Gulp to minify the website's source code: `gulp`
-8. Run yeeturl with `node index.js` or `npm start`
+6. Run yeeturl with `node index.js` or `npm start`
 
 *It is recommended that you run yeeturl behind a reverse proxy with a [modern HTTPS configuration](https://ssl-config.mozilla.org/).*
 
