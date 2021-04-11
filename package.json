@@ -15,5 +15,12 @@
     "moment": "^2.29.1",
     "mongo-sanitize": "^1.1.0",
     "mongoose": "^5.12.1"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-purgecss": "^4.0.3",
+    "gulp-uglify-es": "^2.0.0"
   }
 }

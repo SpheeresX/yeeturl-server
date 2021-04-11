@@ -53,7 +53,7 @@ app.use(compression());
 app.use(Express.json({ limit: '2kb' }));
 
 /* Make static files available */
-app.use(Express.static(__dirname + "/web"));
+app.use(Express.static(__dirname + "/dist"));
 
 /* Sanitize user input. We're doing this on all requests for convenience. */
 app.use((req, res, next) => {
@@ -109,7 +109,7 @@ app.post('/api/shorten', async (req, res) => {
 
 /* Keep this below all routes. 404 page */
 app.use((req, res, next) => {
-    res.status(404).sendFile(__dirname + '/web/404.html');
+    res.status(404).sendFile(__dirname + '/dist/404.html');
 });
 
 /* Start the webserver */

@@ -7,11 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="url shortener, yeeturl, privacy, e2ee">
     <meta name="description" content="yeeturl is a privacy-respecting and end-to-end encrypted URL shortener that cannot read any of your URLs.">
-    <!-- The purged CSS removes a lot of bloat found in Bootstrap and only
-         keeps what's needed for the page to work. Replace "purged" with
-         "original" if you see that the page is breaking when modifying the UI. -->
-    <link rel="stylesheet" href="css/bootstrap-dark.purged.min.css">
-    <link href="css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="all.css" inline>
 </head>
 
 <body>
@@ -60,12 +56,9 @@
          visible (and partially usable) while things are still being loaded
         */
         window.onload = () => {
-            let sjclJS = document.createElement('script');
-            let yeeturlJS = document.createElement('script');
-            sjclJS.src = "js/sjcl.js";
-            yeeturlJS.src = "js/yeeturl.js";
-            document.body.appendChild(sjclJS);
-            document.body.appendChild(yeeturlJS);
+            let JS = document.createElement('script');
+            JS.src = "all.js";
+            document.body.appendChild(JS);
         }
     </script>
 
