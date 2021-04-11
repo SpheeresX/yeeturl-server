@@ -15,22 +15,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
       - run: npm i -g nexe
       - run: mkdir build/
       - run: nexe -t linux-x64-12.16.2 cli.js -o build/server-linux
       - run: nexe -t windows-x86-12.18.2 cli.js -o build/server-windows
       - run: nexe -t mac-x64-12.18.2 cli.js -o build/server-mac
 
-      - name: Compress binaries
       - uses: edgarrc/action-7z@v1.0.4
         with:
           args: 7z a -t7z -mx=9 build.7z ./build/            
 
-      - name: Publish release
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
