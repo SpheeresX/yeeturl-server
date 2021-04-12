@@ -10,7 +10,7 @@
 - the provided URL is encrypted using [sjcl](https://bitwiseshiftleft.github.io/sjcl/). The password which was previously generated is hashed using PBKDF2 with 275,000 iterations first to slow down brute-force attacks,
 - the encrypted URL is sent to our server.
 
-- Our server generates a random, 6-character ID for the URL,
+- Our server generates a random ID for the URL,
 - your data is saved to a database,
 - the plaintext ID is sent back to the client.
 

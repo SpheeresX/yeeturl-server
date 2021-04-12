@@ -79,11 +79,11 @@ yeeturl.getShortenedLink = async () => {
 
   if (!yeeturl.validateURL(decrypted))
     return longURLRedirect.innerHTML =
-      "<p>The URL you were supposed to get redirected to is invalid and has been blocked to prevent attacks.</p>";
+      "<p>This URL is invalid and has been blocked to prevent attacks.</p>";
 
   longURLRedirect.innerHTML = `<p>You are about to get redirected to: </p>
   <p><b><a rel="noopener noreferrer" href="${yeeturl.sanitizeURL(decrypted)}">${yeeturl.sanitizeURL(decrypted)}</a></b></p>
-  <p><sub>For security reasons, you have to click on the URL above to get redirected. If it looks suspicious, please do not click on it.</sub></p>`;
+  <p><sub>For safety reasons, you have to click on the URL above to get redirected. If it looks suspicious, please do not click on it.</sub></p>`;
 };
 
 yeeturl.passwords = {
