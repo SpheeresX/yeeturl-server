@@ -27,8 +27,8 @@ jobs:
       - run: npm i
       - run: mkdir build/
       - run: nexe -t linux-x64-12.16.2 cli.js --resource "./dist/*" -o build/server-linux
-      - run: nexe -t linux-armv7l cli.js --resource "./dist/*" -o build/server-linux-armv7l
-      - run: nexe -t linux-arm64 cli.js --resource "./dist/*" -o build/server-linux-arm64
+      - run: nexe -t linux-armv7l cli.js --build --resource "./dist/*" -o build/server-linux-armv7l
+      - run: nexe -t linux-arm64 cli.js --build --resource "./dist/*" -o build/server-linux-arm64
       - run: nexe -t windows-x86-12.18.2 cli.js --resource "./dist/*" -o build/server-windows
       - run: nexe -t mac-x64-12.18.2 cli.js --resource "./dist/*" -o build/server-mac
 
