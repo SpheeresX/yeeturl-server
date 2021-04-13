@@ -15,7 +15,7 @@ jobs:
     steps:
       # serialize workflow runs (wait for gulp.yml to finish)
       - uses: softprops/turnstyle@v1
-        with:
+        env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
       - uses: actions/checkout@v2
