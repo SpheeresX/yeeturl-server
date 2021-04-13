@@ -2,8 +2,8 @@ module.exports = (app, Link, log, isJSON) => {
     const crypto = require('crypto');
 
     /* The endpoint below is used to send the encrypted URL to the database. */
-    app.post('/api/shorten', async (req, res) => {
-        log('New request to /api/shorten');
+    app.post('/api/v1/shorten', async (req, res) => {
+        log('New request to /api/v1/shorten');
         if (!req.body.url || !isJSON(req.body.url)) return res.status(400).send();
         // Generate an ID for the url
         var id = crypto.randomBytes(3).toString('hex');

@@ -28,7 +28,21 @@ Example: `./server-linux --port 1234 --mongodb "mongodb://127.0.0.1:27017/yeetur
 
 *It is recommended that you run yeeturl behind a reverse proxy with a [modern HTTPS configuration](https://ssl-config.mozilla.org/).*
 
-## Backups
+<details>
+<summary>FAQ</summary>
+
+**How do I backup my instance?**
+
 This is as simple as backing up your MongoDB database - an official guide is published [here](https://docs.mongodb.com/manual/core/backups/).
 yeeturl doesn't save any files on your machine; you could even run it with no write access as long as the database does have it, making it easy to restore everything.
-Usually, the restore process should be done by restoring your MongoDB database and following the self-hosting steps above.
+Usually, the restore process should be done by restoring your MongoDB database and following the installation steps above.
+
+</details>
+
+<details>
+<summary>API</summary>
+
+- `/api/v1/shorten` - shorten a URL, the post body should be something like `{"link": "URL_ENCRYPTED_WITH_SJCL_HERE"}`
+- `/api/v1/getlink?id=URL_ID_HERE` - get the encrypted data for a URL (you can decrypt that with sjcl)
+
+</details>

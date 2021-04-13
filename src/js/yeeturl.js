@@ -2,8 +2,8 @@
 
 const yeeturl = {};
 
-// comment this if self-hosting
-yeeturl.sinstance = 'https://yeeturl.github.io';
+if (window.location.hostname === "yeeturl.spheeresx.repl.co")
+  yeeturl.sinstance = 'https://yeeturl.github.io';
 
 yeeturl.shorten = async () => {
   const output = document.getElementById('result');
@@ -19,7 +19,7 @@ yeeturl.shorten = async () => {
   const encrypted = sjcl.encrypt(password, url_input, { iter: 275000 });
 
   // send it to the server
-  const res = await fetch(`${document.location.origin}/api/shorten`, {
+  const res = await fetch(`${document.location.origin}/api/v1/shorten`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -53,7 +53,7 @@ yeeturl.getShortenedLink = async () => {
 
   longURLRedirect.innerHTML = "<p>Please wait - decrypting link...</p>";
 
-  const url = `${document.location.origin}/api/getlink?id=${encodeURIComponent(code[0])}`;
+  const url = `${document.location.origin}/api/v1/getlink?id=${encodeURIComponent(code[0])}`;
   const res = await fetch(url);
   if (!res.ok) {
     console.log(res.status);
