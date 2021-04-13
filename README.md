@@ -44,5 +44,6 @@ Usually, the restore process should be done by restoring your MongoDB database a
 
 - `/api/v1/shorten` - shorten a URL, the post body should be something like `{"link": "URL_ENCRYPTED_WITH_SJCL_HERE"}`
 - `/api/v1/getlink?id=URL_ID_HERE` - get the encrypted data for a URL (you can decrypt that with sjcl)
+- `/api/v1/count` - get the amount of shortened URLs
 
 </details>

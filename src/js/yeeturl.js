@@ -153,11 +153,9 @@ yeeturl.refreshUI = () => {
   }
 }
 
-/* ============================== */
-
 // enable the shorten button once our js has finished loading
 document.getElementById('shorten').removeAttribute('disabled');
-
+// shorten the url when the "shorten" button is clicked
 document.getElementById('shorten').addEventListener('click', () => {
   event.preventDefault();
   yeeturl.shorten();
@@ -165,10 +163,11 @@ document.getElementById('shorten').addEventListener('click', () => {
 
 // hide the "shorten url" page and get the long url if a hash (short link) is provided
 yeeturl.refreshUI();
-
 // beta: when the hash changes, just refresh the ui (?) instead of reloading the
 //       whole page to not waste the user's internet
 window.onhashchange = yeeturl.refreshUI;
+
+/* Fun */
 
 // make the logo rainbow on pride month for fun
 // yeeturl doesn't care about your opinions,
@@ -177,6 +176,13 @@ window.onhashchange = yeeturl.refreshUI;
 if (new Date().getMonth() === 5 && !navigator.userAgent.indexOf("Firefox") != -1) {
   document.getElementById('logo').classList.add('rainbow-text');
 }
+
+// show how many urls yeeturl is serving
+(async () => {
+  const res = await fetch('api/v1/count');
+  const json = await res.json();
+  document.getElementById('urlCount').innerText = ` serving ${json.c} URLs`; 
+})();
 
 console.warn(
   "%cStop!",

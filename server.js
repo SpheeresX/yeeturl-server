@@ -88,6 +88,7 @@ exports.run = (port, mongo_url, cli, privacyText) => {
   const routes = require('./routes/routes.js');
   routes.getlinkv1(app, Link, log);
   routes.shortenv1(app, Link, log, isJSON);
+  routes.countv1(app, Link, log);
 
   /* Keep this below all routes. 404 page */
   app.use((req, res, next) => {
