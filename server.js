@@ -8,7 +8,6 @@ exports.run = (port, mongo_url, cli, privacyText) => {
   const rateLimit = require("express-rate-limit");
   const chalk = require('chalk');
   const moment = require('moment');
-  const crypto = require('crypto');
   const sanitize = require('mongo-sanitize');
   const compression = require('compression');
 
@@ -86,32 +85,9 @@ exports.run = (port, mongo_url, cli, privacyText) => {
   });
 
   /* API */
-  /* This endpoint is used to get the encrypted url from the database. */
-  app.get('/api/getlink', async (req, res) => {
-    log('New request to /api/getlink')
-    if (!req.query.id) return res.status(400).send({ err: "Please provide an ID" });
-    const link = await Link.findOne({ id: req.query.id });
-    if (!link) return res.status(404).send({ err: "This link doesn't exist" });
-
-    res.send(link.data);
-  });
-
-  /* The endpoint below is used to send the encrypted URL to the database. */
-  app.post('/api/shorten', async (req, res) => {
-    log('New request to /api/shorten');
-    if (!req.body.url || !isJSON(req.body.url)) return res.status(400).send();
-    // Generate an ID for the url
-    var id = crypto.randomBytes(3).toString('hex');
-    // Save everything to the database
-    const link = new Link({
-      id: id,
-      data: req.body.url
-    }).save((err, doc) => {
-      if (err) return res.status(500).json({ err: "An error has occured while saving your url to the database." });
-
-      res.status(200).json({ link: id });
-    });
-  });
+  const routes = require('./routes/routes.js');
+  routes.getlinkv1(app, Link, log);
+  routes.shortenv1(app, Link, log, isJSON);
 
   /* Keep this below all routes. 404 page */
   app.use((req, res, next) => {
