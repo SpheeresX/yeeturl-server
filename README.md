@@ -6,7 +6,7 @@ A rewrite of the simple and end-to-end encrypted URL shortener.
 ## Features
 
 - 🔐 **End-to-end encrypted.** Only you can read your links.
-- ⚡ **Lightweight.** The website consumes less than 15KB of data & the server doesn't perform any heavy tasks.
+- ⚡ **Lightweight.** The website uses less than 15KB of data & the server doesn't perform any heavy tasks.
 - 💨 **Easy to set up & manage.** Just get a MongoDB server, run the binary and you're ready to go.
 - 💻 **Desktop & CLI apps.** Easily shorten URLs without worrying that the website has been backdoored.
 
