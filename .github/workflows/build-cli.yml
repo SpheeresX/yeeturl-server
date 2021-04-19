@@ -14,9 +14,10 @@ jobs:
 
     steps:
       # serialize workflow runs (wait for gulp.yml to finish)
-      - uses: softprops/turnstyle@v1
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      uses: beckermr/turnstyle-python@v1
+      with:
+        poll-interval-seconds: 5    # checks the status of any previous runs at this interval
+        github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/checkout@v2
 
