@@ -23,8 +23,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: npm i -g nexe
       - run: npm i
+      - run: npm i -g node-prune nexe
+      - run: node-prune
+
       - run: mkdir build/
       - run: nexe -t linux-x64-12.16.2 cli.js --resource "./dist/*" -o build/server-linux
       - run: nexe -t windows-x86-12.18.2 cli.js --resource "./dist/*" -o build/server-windows.exe
@@ -34,7 +36,7 @@ jobs:
         with:
           args: 7z a -t7z -mx=9 build-all.7z ./build/            
       - run: zip -9 server-windows.zip build/server-windows.exe
-      - run: zip -9 server-mac.zip build/server-mac
+      - run: tar -czf server-mac.tar.gz build/server-mac
       - run: tar -cJf server-linux.tar.xz build/server-linux
 
       - uses: "marvinpinto/action-automatic-releases@latest"
@@ -46,5 +48,5 @@ jobs:
           files: |
             build-all.7z
             server-windows.zip
-            server-mac.zip
+            server-mac.tar.gz
             server-linux.tar.xz

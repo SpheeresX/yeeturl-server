@@ -43,6 +43,10 @@ Usually, the restore process should be done by restoring your MongoDB database a
 
 No - GitHub automatically takes care of that for us. You only need to run it if you've modified the front-end's source code (in `src/`).
 
+**Can I use this in my own project?**
+
+Yes! Please host your own instance if it's a large-scale project though.
+
 </details>
 
 <details>
