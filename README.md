@@ -1,5 +1,5 @@
-# yeeturl
-A rewrite of the simple and end-to-end encrypted URL shortener.
+<h1 align="center">yeeturl</h1>
+<p align="center">An end-to-end encrypted URL shortener.</p>
 
 ![yeeturl](readme-images/screenshot.png)
 
@@ -8,13 +8,13 @@ A rewrite of the simple and end-to-end encrypted URL shortener.
 - 🔐 **End-to-end encrypted.** Only you can read your links.
 - ⚡ **Lightweight.** The website uses less than 15KB of data & the server doesn't perform any heavy tasks.
 - 💨 **Easy to set up & manage.** Just get a MongoDB server, run the binary and you're ready to go.
-- 💻 **Desktop & CLI apps.** Easily shorten URLs without worrying that the website has been backdoored.
+- 💻 **[Desktop](https://github.com/SpheeresX/yeeturl-desktop-python) & [CLI](https://github.com/SpheeresX/yeeturl-desktop) apps that use less than 10MB of RAM.** Easily shorten URLs without worrying that the website has been backdoored.
 
 ## Installation
 
 You need to have a MongoDB server for yeeturl to work. [Install](https://www.mongodb.com/try/download/community) it on your computer or get a server with [MongoDB Atlas](https://www.mongodb.com/try)
 
-**Binaries for Linux, Windows & macOS (experimental, no issues found yet)**
+**Binaries for Linux, Windows & macOS (beta, no issues found yet)**
 
 Download `yeeturl-server` from [here](https://github.com/SpheeresX/yeeturl-server/releases) and run it in the terminal.
 
@@ -52,8 +52,8 @@ Yes! Please host your own instance if it's a large-scale project though.
 <details>
 <summary>API</summary>
 
-- `/api/v1/shorten` - shorten a URL, the post body should be something like `{"link": "URL_ENCRYPTED_WITH_SJCL_HERE"}`
-- `/api/v1/getlink?id=URL_ID_HERE` - get the encrypted data for a URL (you can decrypt that with sjcl)
-- `/api/v1/count` - get the amount of shortened URLs
+- `/api/v1/shorten` - (POST) shorten a URL, the post body should be something like `{"link": "URL_ENCRYPTED_WITH_SJCL_HERE"}`
+- `/api/v1/getlink?id=URL_ID_HERE` - (GET) get the encrypted data for a URL (you can decrypt that with sjcl)
+- `/api/v1/count` - (GET) get the amount of shortened URLs
 
 </details>
