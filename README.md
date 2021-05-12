@@ -30,6 +30,15 @@ Example: `./server-linux --port 1234 --mongodb "mongodb://127.0.0.1:27017/yeetur
 
 *It is recommended that you run yeeturl behind a reverse proxy with a [modern HTTPS configuration](https://ssl-config.mozilla.org/).*
 
+## Directory structure
+
+- `/dist` - minified html/css/js files served by the server
+- `/src` - unminified html/css/js files (run `gulp` to regenerate `/dist`)
+- `/models` - mongoose models
+- `/tools` - yeeturl tools (wip)
+- `/routes` - express routes
+- `/readme-images` - screenshots used in this file
+
 <details>
 <summary>FAQ</summary>
 

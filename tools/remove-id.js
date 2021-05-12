@@ -1,4 +1,5 @@
 const readline = require("readline");
+const mongoose = require('mongoose')
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -16,23 +17,30 @@ try {
 
 
 console.log('Connecting to database...');
-const keyv = new Keyv(process.env.MONGODB_URL);
-keyv.on('error', err => {
-    console.error('Connection Error', err);
+// load our mongoose models
+const Link = require('../models/Link.js');
+// connect to our database
+mongoose.connect(mongo_url, { useNewUrlParser: true, useUnifiedTopology: true });
+// check if the connection has succeeded or not
+const db = mongoose.connection
+db.once('open', _ => {
+    console.log('Connected to DB');
+});
+
+db.on('error', err => {
+    console.error('DB connection error:', err);
     process.exit(1);
 });
 
-
-rl.question(`Which ID do you want to remove (https://yeeturl.example.com/#<ID>/<password>)? `, async(input) => {
+rl.question(`What ID do you want to remove (https://yeeturl.example.com/#<ID>/<password>)? `, async (input) => {
     rl.close();
     console.log('Removing ID...');
 
-    const deleted = await keyv.delete(input); // => true
-    if (deleted) {
-        console.log('ID removed successfully.');
-        process.exit(0);
-    } else {
-        console.log('This ID does not exist.');
-        process.exit(1);
-    }
+    Link.deleteOne({id: input}, (e) => {
+        if (e) {
+            console.error('Error:', e);
+            process.exit(1);
+        };
+        console.log('ID deleted');
+    })
 });

@@ -1,4 +1,4 @@
-***Warning: As of 22 March 2021, these tools no longer work with yeeturl.***
+***Warning: As of 22 March 2021, these tools might no longer work with yeeturl.***
 
 ---
 
