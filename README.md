@@ -34,7 +34,7 @@ Example: `./server-linux --port 1234 --mongodb "mongodb://127.0.0.1:27017/yeetur
 
 - `/dist` - minified html/css/js files served by the server
 - `/src` - unminified html/css/js files (run `gulp` to regenerate `/dist`)
-- `/models` - mongoose models
+- `/models` - mongoose schemas
 - `/tools` - yeeturl tools (wip)
 - `/routes` - express routes
 - `/readme-images` - screenshots used in this file
