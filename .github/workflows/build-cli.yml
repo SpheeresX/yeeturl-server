@@ -28,7 +28,7 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/package.json')-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/package-lock.json') }}
 
       - run: npm i
       - run: npm i -g node-prune nexe
