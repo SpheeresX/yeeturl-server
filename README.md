@@ -25,7 +25,7 @@ Example: `./server-linux --port 1234 --mongodb "mongodb://127.0.0.1:27017/yeetur
 2. Clone this repository
 3. Download all third-party libraries; open a terminal, `cd` into this repo, and type `npm i`.
 4. Rename `env.example` to `.env` and modify the values in that file if needed
-5. Write your own privacy policy and terms of service at `dist/privacy.txt`. If you are running yeeturl for yourself or just for a couple of friends, you can just remove everything from this file.
+5. Write your own privacy policy and terms of service at `dist/privacy.html`. If you are running yeeturl for yourself or just for a couple of friends, you can just remove everything from this file.
 6. Run yeeturl with `node index.js` or `npm start`
 
 *It is recommended that you run yeeturl behind a reverse proxy with a [modern HTTPS configuration](https://ssl-config.mozilla.org/).*

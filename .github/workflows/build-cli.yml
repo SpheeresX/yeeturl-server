@@ -24,6 +24,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
+
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package.json')-${{ hashFiles('**/package-lock.json') }}
+
       - run: npm i
       - run: npm i -g node-prune nexe
       - run: node-prune

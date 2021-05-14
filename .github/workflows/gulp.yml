@@ -21,7 +21,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package.json')-${{ hashFiles('**/package-lock.json') }}
+      - run: npm i
       - run: gulp
             
       - name: Commit and Push
