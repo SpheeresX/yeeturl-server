@@ -4,6 +4,7 @@ name: Build CLI app
 on:
   push:
     branches: ["master"]
+  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -24,11 +25,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
-
-      - uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/package-lock.json') }}
 
       - run: npm i
       - run: npm i -g node-prune nexe
