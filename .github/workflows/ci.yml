@@ -1,4 +1,4 @@
-name: Build CLI app
+name: CI
 
 # Controls when the action will run.
 on:
@@ -9,22 +9,43 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # Job name
-  build:
+  gulp:
     # Runner name
     runs-on: ubuntu-latest
 
     steps:
-      # serialize workflow runs (wait for gulp.yml to finish)
-      - uses: beckermr/turnstyle-python@v1
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      # Sets up node
+      - uses: actions/setup-node@v1
         with:
-          poll-interval-seconds: 10    # checks the status of any previous runs at this interval
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          node-version: 14
+      - name: Restore cache
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/package-lock.json') }}
+      - run: npm i --include=dev
+      - run: gulp
 
+      - name: Commit and Push
+        run: |
+          git config --global user.name 'Gulp Bot'
+          git config --global user.email 'booooogulpasugfdhfgjdsg@users.noreply.github.com'
+          git add --all
+          git commit -am "Update dist folder"
+          git push
+
+  cli:
+    if: always()
+    needs: gulp
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
 
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 12
 
       - name: Restore cache
         uses: actions/cache@v2
