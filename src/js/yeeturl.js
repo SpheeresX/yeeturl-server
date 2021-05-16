@@ -35,7 +35,7 @@ yeeturl.shorten = async () => {
       case 429:
         return output.innerText = 'You are sending too much requests. Please try again later.';
       case 413:
-        return output.innerText = 'The link you have provided is too long.';
+        return output.innerText = 'The link you have entered is too long.';
       default:
         return output.innerText = 'An unknown error has occured.';
     }
@@ -74,12 +74,12 @@ yeeturl.getShortenedLink = async () => {
   } catch(e) {
     // if the data is invalid, or the password is incorrect, catch the error.
     console.error(e);
-    return longURLRedirect.innerHTML = "<p>An error has occured while decrypting this link. This often happens when the password (short link) is invalid - make sure to check for any typos.</p>";
+    return longURLRedirect.innerHTML = "<p>An error occured while decrypting this link. This often happens when the link is invalid - make sure to check for any typos.</p>";
   }
 
   if (!yeeturl.validateURL(decrypted))
     return longURLRedirect.innerHTML =
-      "<p>This URL is invalid and has been blocked to prevent attacks.</p>";
+      "<p>This URL is invalid and has been blocked.</p>";
 
   longURLRedirect.innerHTML = `<p>You are about to get redirected to: </p>
   <p><b><a rel="noopener noreferrer" href="${yeeturl.sanitizeURL(decrypted)}">${yeeturl.sanitizeURL(decrypted)}</a></b></p>
@@ -181,7 +181,7 @@ if (new Date().getMonth() === 5 && !navigator.userAgent.indexOf("Firefox") != -1
 (async () => {
   const res = await fetch('api/v1/count');
   const json = await res.json();
-  document.getElementById('urlCount').innerText = ` serving ${json.c} URLs`; 
+  document.getElementById('urlCount').innerText = ` serving ${json.c} URLs`;
 })();
 
 console.warn(
