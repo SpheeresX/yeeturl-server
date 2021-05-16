@@ -48,9 +48,9 @@ exports.run = (port, mongo_url, cli, privacyText) => {
   app.use(Express.json({ limit: '2kb' }));
 
   /* If we're running as a CLI app, send the privacy policy that we got from cli.js instead of the one in dist/. */
-  app.use('/privacy.txt', (req, res, next) => {
+  app.use('/privacy.html', (req, res, next) => {
     if (cli) {
-      res.set('Content-Type', 'text/plain');
+      res.set('Content-Type', 'text/html');
       return res.send(privacyText);
     } else {
       next();

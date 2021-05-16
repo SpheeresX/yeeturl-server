@@ -6,7 +6,7 @@ program
 	.version('1.0.0')
 	.option('-p, --port <port>', 'port to listen on')
 	.option('-m, --mongodb <url>', 'MongoDB server to connect to')
-	.option('-r, --privacy <path>', 'Path to your privacy policy (privacy.txt)')
+	.option('-r, --privacy <path>', 'Path to your privacy policy (privacy.html)')
 	.parse();
 var opts = program.opts();
 
@@ -15,7 +15,7 @@ if (!opts.port || !opts.mongodb || !opts.privacy) {
 	return program.help();
 }
 
-// Read the privacy policy
+// Read the privacy policy (to pass it to the server)
 var privacy = fs.readFileSync(opts.privacy);
 
 require('./server.js').run(opts.port, opts.mongodb, true, privacy);

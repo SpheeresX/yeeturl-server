@@ -17,7 +17,7 @@ jobs:
       # serialize workflow runs (wait for gulp.yml to finish)
       - uses: beckermr/turnstyle-python@v1
         with:
-          poll-interval-seconds: 5    # checks the status of any previous runs at this interval
+          poll-interval-seconds: 10    # checks the status of any previous runs at this interval
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/checkout@v2
@@ -26,6 +26,11 @@ jobs:
         with:
           node-version: 14
 
+      - name: Restore cache
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/package-lock.json') }}
       - run: npm i
       - run: npm i -g node-prune nexe
       - run: node-prune
@@ -37,7 +42,7 @@ jobs:
 
       - uses: edgarrc/action-7z@v1.0.4
         with:
-          args: 7z a -t7z -mx=9 build-all.7z ./build/            
+          args: 7z a -t7z -mx=9 build-all.7z ./build/
       - run: zip -9 server-windows.zip build/server-windows.exe
       - run: tar -czf server-mac.tar.gz build/server-mac
       - run: tar -cJf server-linux.tar.xz build/server-linux

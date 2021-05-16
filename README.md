@@ -18,7 +18,7 @@ You need to have a MongoDB server for yeeturl to work. [Install](https://www.mon
 
 Download `yeeturl-server` from [here](https://github.com/SpheeresX/yeeturl-server/releases) and run it in the terminal.
 
-Example: `./server-linux --port 1234 --mongodb "mongodb://127.0.0.1:27017/yeeturl" --privacy ./my_privacy_policy.txt`
+Example: `./server-linux --port 1234 --mongodb "mongodb://127.0.0.1:27017/yeeturl" --privacy ./my_privacy_policy.html`
 
 **From source code**
 1. Install Node.js

@@ -22,9 +22,14 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - name: Restore cache
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/package-lock.json') }}
       - run: npm ci
       - run: gulp
-            
+
       - name: Commit and Push
         run: |
           git config --global user.name 'Gulp Bot'
