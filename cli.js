@@ -16,6 +16,6 @@ if (!opts.port || !opts.mongodb || !opts.privacy) {
 }
 
 // Read the privacy policy (to pass it to the server)
-var privacy = fs.readFileSync(opts.privacy);
+var privacy = fs.readFileSync(opts.privacy, 'utf-8');
 
 require('./server.js').run(opts.port, opts.mongodb, true, privacy);
