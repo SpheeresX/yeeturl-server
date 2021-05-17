@@ -26,9 +26,4 @@ gulp.task('scripts', () => {
         .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('privacy', () => {
-    return gulp.src('src/privacy.txt')
-        .pipe(gulp.dest('dist/'));
-});
-
-gulp.task('default', gulp.series('scripts', 'styles', 'html', 'privacy'));
+gulp.task('default', gulp.series('scripts', 'styles', 'html'));
