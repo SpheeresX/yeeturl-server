@@ -30,11 +30,15 @@ jobs:
 
       - name: Commit and Push
         run: |
-          git config --global user.name 'Gulp Bot'
-          git config --global user.email 'booooogulpasugfdhfgjdsg@users.noreply.github.com'
+          git config --global user.name 'actions-user'
+          git config --global user.email 'action@github.com'
           git add --all
-          git commit -am "Update dist folder"
-          git push
+          git commit -am "Update dist folder" || echo "No changes were made."
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
 
   cli:
     if: always()
